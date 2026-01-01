@@ -7,15 +7,14 @@ class Todo {
   _setEventListeners() {
     const todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
     this._todoCheckboxEl.addEventListener("change", () => {
-      this._data.completed = this._data.completed;
+      this._data.completed = this._todoCheckboxEl.checked;
     });
     todoDeleteBtn.addEventListener("click", () => {
-      console.log(this._data.completed);
       this._todoElement.remove();
     });
   }
 
-  _generateCheckedDate() {
+  _applyCheckboxBindings() {
     this._todoCheckboxEl = this._todoElement.querySelector(".todo__completed");
     this._todoLabel = this._todoElement.querySelector(".todo__label");
     this._todoCheckboxEl.checked = this._data.completed;
@@ -24,23 +23,32 @@ class Todo {
   }
 
   getView() {
-    this._todoElement = this._templateElement.content
-      .querySelector(".todo")
-      .cloneNode(true);
+  this._todoElement = this._templateElement.content
+    .querySelector(".todo")
+    .cloneNode(true);
 
-    const todoNameEl = this._todoElement.querySelector(".todo__name");
-    const todoDate = this._todoElement.querySelector(".todo__date");
-    const todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
+  const todoNameEl = this._todoElement.querySelector(".todo__name");
+  const todoDate = this._todoElement.querySelector(".todo__date");
+  this._todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
 
-    todoNameEl.textContent = this._data.name;
-    todoDate.textContent = this._data.date;
-    todoDeleteBtn.id = `delete-${this._data.id}`;
+  todoNameEl.textContent = this._data.name;
 
-    this._generateCheckedDate();
-    this._setEventListeners();
-
-    return this._todoElement;
+  const dueDate = new Date(this._data.date);
+  if (!isNaN(dueDate.getTime())) {
+    todoDate.textContent = dueDate.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  } else {
+    todoDate.textContent = "";
   }
+
+  this._applyCheckboxBindings();
+  this._setEventListeners();
+
+  return this._todoElement;
+}
 }
 
 export default Todo;
