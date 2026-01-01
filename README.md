@@ -33,4 +33,4 @@ This project was built using:
 
 This project is deployed on GitHub Pages:
 
-- ADD LINK HERE
+[- ADD LINK HERE](https://jg652546-blip.github.io/se_project_todo-app/)
