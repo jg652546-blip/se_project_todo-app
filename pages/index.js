@@ -27,8 +27,15 @@ const generateTodo = (data) => {
   const todo = new Todo(data, "#todo-template");
   const todoElement = todo.getView();
   return todoElement;
+};
 
-  /* To be removed:
+const renderTodo = (dataArray) => {
+  dataArray.forEach((data) => {
+    const todoElement = generateTodo(data);
+    todosList.append(todoElement);
+  });
+};
+
   const todoElement = todoTemplate.content
     .querySelector(".todo")
     .cloneNode(true);
@@ -59,10 +66,9 @@ const generateTodo = (data) => {
 
   todoDeleteBtn.addEventListener("click", () => {
     todoElement.remove();
-  }); */
+  });
 
-  return todoElement;
-};
+  return todoElement; {};
 
 addTodoButton.addEventListener("click", () => {
   openModal(addTodoPopup);
