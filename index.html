@@ -6,7 +6,6 @@
     <title>Simple ToDo App</title>
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
-
   <body>
     <div class="page">
       <div class="page__content">
@@ -16,7 +15,6 @@
           <button class="button button_action_add header__button">
             + Add Todo
           </button>
-
           <div class="popup" id="add-todo-popup">
             <div class="popup__content">
               <h3 class="popup__title">Add new ToDo</h3>
@@ -25,7 +23,6 @@
                 class="popup__close"
                 type="button"
               ></button>
-
               <form
                 class="popup__form"
                 name="add-todo-form"
@@ -33,7 +30,7 @@
                 novalidate
               >
                 <fieldset class="popup__fieldset">
-                  <label class="popup__label">
+                  <label class="popup__label" for="todo-name">
                     What needs to be done?
                     <input
                       class="popup__input"
@@ -47,8 +44,7 @@
                     />
                     <span class="popup__error" id="todo-name-error"></span>
                   </label>
-
-                  <label class="popup__label">
+                  <label class="popup__label" for="todo-date">
                     When does it need to be done? (optional)
                     <input
                       class="popup__input popup__input_type_date"
@@ -61,7 +57,6 @@
                     <span class="popup__error" id="todo-date-error"></span>
                   </label>
                 </fieldset>
-
                 <button class="button popup__button" type="submit">
                   Create
                 </button>
@@ -69,30 +64,29 @@
             </div>
           </div>
         </header>
-
         <main>
           <section class="counter">
-            <p class="counter__text">Showing X out of Y completed</p>
+            <h2 class="counter__text">Showing X out of Y completed</h2>
           </section>
-
           <section class="todos">
             <ul class="todos__list"></ul>
+
+<template id="todo-template">
+  <li class="todo">
+    <label class="todo__label">
+      <input class="todo__completed" type="checkbox" />
+      <span class="todo__name"></span>
+      <span class="todo__date"></span>
+    </label>
+    <button class="todo__delete-btn" type="button"></button>
+  </li>
+</template>
+
+            </ul>
           </section>
+          <script type="module" src="./pages/index.js"></script>
         </main>
       </div>
     </div>
-
-    <template id="todo-template">
-      <li class="todo">
-        <label class="todo__label">
-          <input class="todo__completed" type="checkbox" />
-          <span class="todo__name"></span>
-          <span class="todo__date"></span>
-        </label>
-        <button class="todo__delete-btn" type="button"></button>
-      </li>
-    </template>
-
-    <script type="module" src="./pages/index.js"></script>
   </body>
 </html>
