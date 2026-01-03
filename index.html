@@ -33,7 +33,7 @@
                 novalidate
               >
                 <fieldset class="popup__fieldset">
-                  <label class="popup__label" for="todo-name">
+                  <label class="popup__label">
                     What needs to be done?
                     <input
                       class="popup__input"
@@ -48,7 +48,7 @@
                     <span class="popup__error" id="todo-name-error"></span>
                   </label>
 
-                  <label class="popup__label" for="todo-date">
+                  <label class="popup__label">
                     When does it need to be done? (optional)
                     <input
                       class="popup__input popup__input_type_date"
@@ -89,11 +89,7 @@
           <span class="todo__name"></span>
           <span class="todo__date"></span>
         </label>
-        <ul class="todo__buttons">
-          <li>
-            <button class="todo__delete-btn" type="button"></button>
-          </li>
-        </ul>
+        <button class="todo__delete-btn" type="button"></button>
       </li>
     </template>
 
