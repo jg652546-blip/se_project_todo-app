@@ -11,8 +11,12 @@ export default class PopupWithForm extends Popup {
 
   _getInputValues() {
     const values = {};
-    this._inputs.forEach(input => {
-      values[input.name] = input.value;
+    this._inputs.forEach((input) => {
+      if (input.type === "date") {
+        values[input.name] = input.value ? new Date(input.value) : "";
+      } else {
+        values[input.name] = input.value.trim();
+      }
     });
     return values;
   }
@@ -20,11 +24,15 @@ export default class PopupWithForm extends Popup {
   setEventListeners() {
     super.setEventListeners();
 
-    this._form.addEventListener("submit", evt => {
+    this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
+
+      if (!this._form.checkValidity()) return;
+
       this._handleFormSubmit(this._getInputValues());
-      this.close();
+
       this._form.reset();
+      this.close();
     });
   }
 }
