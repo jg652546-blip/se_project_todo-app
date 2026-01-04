@@ -1,3 +1,4 @@
+vendor/normalize.css
 node_modules
 dist
 build

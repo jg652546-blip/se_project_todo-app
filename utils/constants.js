@@ -25,7 +25,7 @@ const validationConfig = {
   submitButtonSelector: ".popup__button",
   errorClass: "popup__error_visible",
   inputErrorClass: "popup__input_type_error",
-  inactiveButtonClass: "popup__button_disabled",
+  inactiveButtonClass: "button_disabled",
 };
 
 export { initialTodos, validationConfig };
