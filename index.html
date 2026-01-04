@@ -85,7 +85,12 @@
     <template id="todo-template">
       <li class="todo">
         <label class="todo__label">
-          <input class="todo__completed" type="checkbox" />
+          <input
+            class="todo__completed"
+            type="checkbox"
+            aria-labelledby="todo-name"
+          />
+          <span class="todo__name" id="todo-name"></span>
           <span class="todo__name"></span>
           <span class="todo__date"></span>
         </label>
