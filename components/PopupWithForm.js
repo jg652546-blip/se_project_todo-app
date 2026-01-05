@@ -9,14 +9,14 @@ export default class PopupWithForm extends Popup {
     this._inputs = Array.from(this._form.querySelectorAll(".popup__input"));
   }
 
+  getForm() {
+    return this._form;
+  }
+
   _getInputValues() {
     const values = {};
     this._inputs.forEach((input) => {
-      if (input.type === "date") {
-        values[input.name] = input.value ? new Date(input.value) : "";
-      } else {
-        values[input.name] = input.value.trim();
-      }
+      values[input.name] = input.value.trim();
     });
     return values;
   }
